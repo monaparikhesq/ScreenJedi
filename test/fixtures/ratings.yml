@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  opinion: MyString
+  user_id: 1
+  screencast_id: 1
+
+two:
+  opinion: MyString
+  user_id: 1
+  screencast_id: 1
