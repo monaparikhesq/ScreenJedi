@@ -1,4 +1,6 @@
 Screenjedi::Application.routes.draw do
+  get("/screenjedi", :controller => 'screenjedi', :action => 'index' )
+  
   resources :subscriptions
 
   resources :taggings
