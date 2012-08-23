@@ -10,7 +10,9 @@ puts "Creating users."
 100.times do |i|
   User.create(:email => "user#{i}@gmail.com", 
               :first_name => "First#{i}", 
-              :last_name => "Last#{i}")
+              :last_name => "Last#{i}",
+              :password => "test",
+              :password_confirmation => "test")
 end
 
 puts "Creating tags."
@@ -27,9 +29,10 @@ puts "Creating screencasts."
                     :embed => "http://www.youtube.com/watch?v=sdyC1BrQd6g")
 end
 
+taglist = Tag.all
 puts "Creating taggings."
 Screencast.all.each do |screencast|
-  Tag.all.sample(2).each do |tag|
+  taglist.sample(2).each do |tag|
     Tagging.create(:screencast_id => screencast.id, 
                    :tag_id => tag.id)
   end
@@ -57,9 +60,10 @@ User.all.each do |user|
   end
 end
 
+userlist = User.all
 puts "Creating subscriptions."
 Screencast.all.each do |screencast|
-  User.all.sample(2).each do |user|
+  userlist.sample(2).each do |user|
     Subscription.create(:screencast_id => screencast.id, 
                         :user_id => user.id)
   end

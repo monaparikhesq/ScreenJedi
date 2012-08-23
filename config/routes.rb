@@ -1,6 +1,13 @@
 Screenjedi::Application.routes.draw do
   get("/screenjedi", :controller => 'screenjedi', :action => 'index' )
   
+  root :to => "Screencasts#index"
+  
+  get 'signin' => 'sessions#new', :as => :signin
+  post 'sessions/create' => 'sessions#create'
+  get 'sessions/destroy' => 'sessions#destroy', :as => :signout
+
+  
   resources :subscriptions
 
   resources :taggings
@@ -14,6 +21,10 @@ Screenjedi::Application.routes.draw do
   resources :users
 
   resources :screencasts
+  
+  get '/signup' => 'Users#new', :as => :signup
+  
+  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -21,14 +21,18 @@ data-target=".nav-collapse">
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</a>
-			<a class="brand" href="#">ScreenJedi</a>
+			<%= link_to "ScreenJedi", root_url, :class => "brand" %>
 			<div class="nav-collapse">
 				<ul class="nav">
 					<li><%= link_to "Browse Screencasts", screencasts_path %></li>
 					<li><%= link_to "Create A Screencast"%></li>
-					<li><%= link_to "Become a ScreenJedi"%>
+					<li><%= link_to "Become a ScreenJedi", signup_url %>
 					<li><%=link_to "Contact Us"%></li>
-					<li><%=link_to "Sign In"%></li>
+					<% if session[:user_id] %>
+					<li><%=link_to "Sign Out", signout_url %></li>
+					<% else %>
+					<li><%=link_to "Sign In", signin_url %></li>
+					<% end %>
 				</ul>
 			</div>
 		</div>

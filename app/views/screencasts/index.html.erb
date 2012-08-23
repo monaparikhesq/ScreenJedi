@@ -5,7 +5,6 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:title) %></th>
       <th><%= model_class.human_attribute_name(:description) %></th>
       <th><%= model_class.human_attribute_name(:length) %></th>
@@ -17,8 +16,7 @@
   <tbody>
     <% @screencasts.each do |screencast| %>
       <tr>
-        <td><%= link_to screencast.id, screencast_path(screencast) %></td>
-        <td><%= screencast.title %></td>
+        <td><%= link_to screencast.title, screencast_path(screencast) %></td>
         <td><%= screencast.description %></td>
         <td><%= screencast.length %></td>
         <td><%= screencast.embed %></td>

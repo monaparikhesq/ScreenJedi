@@ -1,6 +1,15 @@
 class UsersController < ApplicationController
   # GET /users
   # GET /users.json
+  
+  before_filter :require_login, :only => [:show, :destroy]
+  
+  def require_login
+    if session[:user_id] != params[:id].to_i
+      redirect_to root_url, notice: 'Fuck you!'
+    end
+  end
+  
   def index
     @users = User.all
 
@@ -80,4 +89,5 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
 end
