@@ -1,6 +1,6 @@
 <%- model_class = Subscription -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+  <h2><%=t '.title', :default => model_class.model_name.human.pluralize %></h2>
 </div>
 <table class="table table-striped">
   <thead>
@@ -15,7 +15,7 @@
   <tbody>
     <% @subscriptions.each do |subscription| %>
       <tr>
-        <td><%= link_to subscription.id, subscription_path(subscription) %></td>
+        <td class="title"><%= link_to subscription.id, subscription_path(subscription) %></td>
         <td><%= subscription.screencast_id %></td>
         <td><%= subscription.user_id %></td>
         <td><%=l subscription.created_at %></td>

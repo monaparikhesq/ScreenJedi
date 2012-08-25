@@ -1,6 +1,6 @@
 <%- model_class = Screencast -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+  <h2><%=t '.title', :default => model_class.model_name.human.pluralize %></h2>
 </div>
 <table class="table table-striped">
   <thead>
@@ -16,7 +16,7 @@
   <tbody>
     <% @screencasts.each do |screencast| %>
       <tr>
-        <td><%= link_to screencast.title, screencast_path(screencast) %></td>
+        <td class="title"><%= link_to screencast.title, screencast_path(screencast) %></td>
         <td><%= screencast.description %></td>
         <td><%= screencast.length %></td>
         <td><%= screencast.embed %></td>

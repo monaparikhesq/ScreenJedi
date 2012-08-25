@@ -1,6 +1,6 @@
 <%- model_class = Rating -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+  <h2><%=t '.title', :default => model_class.model_name.human.pluralize %></h2>
 </div>
 <table class="table table-striped">
   <thead>
@@ -16,7 +16,7 @@
   <tbody>
     <% @ratings.each do |rating| %>
       <tr>
-        <td><%= link_to rating.id, rating_path(rating) %></td>
+        <td class="title"><%= link_to rating.id, rating_path(rating) %></td>
         <td><%= rating.opinion %></td>
         <td><%= rating.user_id %></td>
         <td><%= rating.screencast_id %></td>
