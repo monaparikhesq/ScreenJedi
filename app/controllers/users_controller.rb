@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   
-  before_filter :require_login, :only => [:show, :destroy]
+  before_filter :require_login, :only => [:show, :edit, :destroy]
   
   def require_login
     if session[:user_id] != params[:id].to_i
