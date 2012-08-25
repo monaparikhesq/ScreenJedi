@@ -1,5 +1,7 @@
 Screenjedi::Application.routes.draw do
 
+  root :to => 'screencasts#index'
+  
   resources :follows
 
   get '/' => 'screencasts#index'
