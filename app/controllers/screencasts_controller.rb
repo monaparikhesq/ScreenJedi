@@ -1,6 +1,14 @@
 class ScreencastsController < ApplicationController
   # GET /screencasts
   # GET /screencasts.json
+  before_filter :require_login_admin, :only => [:new, :create, :destroy]
+  
+  def require_login_admin
+    if !session[:user_id].present? || User.find(session[:user_id]).admin == false
+      redirect_to user_url(session[:user_id]), notice: 'Fuck you!'
+    end
+  end
+  
   def index
     @screencasts = Screencast.all
 
@@ -41,6 +49,7 @@ class ScreencastsController < ApplicationController
   # POST /screencasts.json
   def create
     @screencast = Screencast.new(params[:screencast])
+    @screencast.company_id = User.find(session[:user_id]).company.id
 
     respond_to do |format|
       if @screencast.save
