@@ -5,15 +5,18 @@ Tagging.destroy_all
 Subscription.destroy_all
 Note.destroy_all
 Rating.destroy_all
+Company.destroy_all
+Membership.destroy_all
 
 
 puts "Creating users."
-100.times do |i|
+25.times do |i|
   User.create(:email => "user#{i}@gmail.com", 
               :first_name => "First#{i}", 
               :last_name => "Last#{i}",
               :password => "test",
-              :password_confirmation => "test")
+              :password_confirmation => "test",
+              :admin => false)
 end
 
 puts "Creating tags."
@@ -23,7 +26,7 @@ tags.each do |tag|
 end
 
 puts "Creating screencasts."
-100.times do |i|
+50.times do |i|
   Screencast.create(:title => "Screencast #{i}", 
                     :description => "Lorem Ipsum #{i}", 
                     :length => rand(360), 
@@ -70,12 +73,18 @@ Screencast.all.each do |screencast|
   end
 end
 
+companies = ["ScreenJedi","InGen", "Cyberdyne", "Aperture Science", "Tyrell Corp"]
 puts "Creating companies."
-100.times do |i|
-  Company.create(:name => "Your Company Name")
+companies.each do |i|
+  Company.create(:name => i)
 end
 
-
+co = Company.all
+puts "Creating memberships"
+userlist.each do |user|
+  Membership.create(:company_id => co.sample.id,
+                    :user_id => user.id)
+end
 
 
 
