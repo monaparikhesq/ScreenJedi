@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120823212728) do
+ActiveRecord::Schema.define(:version => 20120824235800) do
 
   create_table "notes", :force => true do |t|
     t.text     "body"

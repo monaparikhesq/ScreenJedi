@@ -11,7 +11,7 @@
   <dt><strong><%= model_class.human_attribute_name(:length) %>:</strong></dt>
   <dd><%= @screencast.length %></dd>
   <dt><strong><%= model_class.human_attribute_name(:embed) %>:</strong></dt>
-  <dd><%= @screencast.embed %></dd>
+  <dd><%= video_embed_tag(@screencast.embed).html_safe %></dd>
 </dl>
 
 <div class="form-actions">
