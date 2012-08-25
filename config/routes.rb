@@ -1,6 +1,6 @@
 Screenjedi::Application.routes.draw do
 
-  root :to => 'screencasts#index'
+  root :to => 'screenjedi#welcome'
   
   resources :follows
 

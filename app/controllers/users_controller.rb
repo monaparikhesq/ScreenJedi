@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   
   def require_login
     if session[:user_id] != params[:id].to_i
-      redirect_to root_url, notice: 'Fuck you!'
+      redirect_to user_url(session[:user_id]), notice: 'Fuck you!'
     end
   end
   
