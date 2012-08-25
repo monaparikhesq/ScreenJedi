@@ -11,3 +11,23 @@
  *= require_self
  *= require_tree .
  */
+
+ul {
+	list-style: none;
+}
+
+nav ul li a {
+	text-decoration: none;
+}
+
+nav {
+	background: yellow;
+}
+
+nav ul li {
+	float: left;
+}
+
+.yield {
+	clear: both;
+}
