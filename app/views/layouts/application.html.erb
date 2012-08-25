@@ -12,29 +12,30 @@ type="text/javascript"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+  <nav>
+		<h1><%= link_to "ScreenJedi", root_url %></h1>
+		<ul>
+			<% if session[:user_id] && User.find(session[:user_id]).admin == true %>
+			<li><%= link_to "Create A Screencast", new_screencast_url %> | </li>
+			<% end %>
+			<% if session[:user_id] %> 
+			<li><%=link_to "Sign Out", signout_url %> | </li> 
+			<% else %>
+			<li><%= link_to "Become a ScreenJedi", signup_url %> | </li>
+			<li><%=link_to "Sign In", signin_url %> | </li> 
+			<% end %>
+			<li class="contact"><%=link_to "Contact Us"%></li>
+			
+		</ul>
+	</nav>
 	<div class="container">
-		<nav>
-			<h1><%= link_to "ScreenJedi", root_url %></h1>
-			<ul>
-				<% if session[:user_id] && User.find(session[:user_id]).admin == true %>
-				<li><%= link_to "Create A Screencast", new_screencast_url %> | </li>
-				<% end %>
-				<% if session[:user_id] %> 
-				<li><%=link_to "Sign Out", signout_url %> | </li> 
-				<% else %>
-				<li><%= link_to "Become a ScreenJedi", signup_url %> | </li>
-				<li><%=link_to "Sign In", signin_url %> | </li> 
-				<% end %>
-				<li><%=link_to "Contact Us"%></li>
-				
-			</ul>
-		</nav>
+		
 		<div class="yield"><%= yield %></div>
 	</div> <!-- container ******************************************************************-->
-</body>
 <footer>
 	<p>About Us</p>
 	ScreenJedi is a web app that allows you to create, post, store and view screencasts.
 </footer>
+</body>
 </html>
 
