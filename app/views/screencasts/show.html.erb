@@ -4,14 +4,15 @@
 </div>
 
 <dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:title) %>:</strong></dt>
+  <dt><strong>Title:</strong></dt>
   <dd><%= @screencast.title %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
+  <dt><strong>Description:</strong></dt>
   <dd><%= @screencast.description %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:length) %>:</strong></dt>
+  <dt><strong>Length:</strong></dt>
   <dd><%= @screencast.length %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:embed) %>:</strong></dt>
-  <dd><%= video_embed_tag(@screencast.embed).html_safe %></dd>
+  <dt><strong>Uploader:</strong></dt>
+  <dd><%= @screencast.user %></dd>
+  <dt><%= video_embed_tag(@screencast.embed).html_safe %></dt>
 </dl>
 
 <div class="form-actions">
