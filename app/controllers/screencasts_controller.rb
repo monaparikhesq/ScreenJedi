@@ -3,6 +3,7 @@ class ScreencastsController < ApplicationController
   # GET /screencasts.json
   before_filter :require_login_admin, :only => [:new]
   before_filter :require_login_admin_co, :only => [:edit, :destroy]
+  before_filter :require_match_company, :only => [:show]
   
   def require_login_admin
     if !session[:user_id].present? || 
@@ -19,6 +20,13 @@ class ScreencastsController < ApplicationController
     end
   end
   
+  def require_match_company
+    if !session[:user_id].present? ||
+      User.find(session[:user_id]).company.id != Screencast.find(params[:id]).company.id
+      redirect_to root_url
+    end
+  end
+  
   def index
     @screencasts = Screencast.all
 
@@ -32,6 +40,8 @@ class ScreencastsController < ApplicationController
   # GET /screencasts/1.json
   def show
     @screencast = Screencast.find(params[:id])
+    @rating = Rating.new
+    @rating.screencast = @screencast
 
     respond_to do |format|
       format.html # show.html.erb

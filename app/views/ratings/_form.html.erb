@@ -1,8 +1,8 @@
 <%= form_for @rating, :html => { :class => 'form-horizontal' } do |f| %>
   <div class="control-group">
-    <%= f.label :opinion, :class => 'control-label' %>
+    <%= f.label :stars, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :opinion, :class => 'text_field' %>
+      <%= f.number_field :stars, :class => 'text_field' %>
     </div>
   </div>
   <div class="control-group">

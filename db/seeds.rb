@@ -42,16 +42,6 @@ Screencast.all.each do |screencast|
   end
 end
 
-puts "Creating ratings."
-ratings = ["awesome", "not so awesome"]
-screencasts = Screencast.all
-User.all.each do |user|
-  screencasts.sample(rand(5)).each do |screencast|
-    Rating.create :screencast_id => screencast.id,
-                  :user_id => user.id,
-                  :opinion => ratings.sample
-  end
-end
 
 puts "Creating notes."
 notes = ["Lorem Ipsum"]
@@ -90,6 +80,15 @@ puts "Adding companies to screencasts"
 Screencast.all.each do |scast|
   scast.company_id = co.sample.id
   scast.save
+end
+
+puts "Creating ratings."
+User.all.each do |user|
+  user.company.screencasts.sample(rand(5)).each do |screencast|
+    Rating.create :screencast_id => screencast.id,
+                  :user_id => user.id,
+                  :stars => rand(1..6)
+  end
 end
 
 

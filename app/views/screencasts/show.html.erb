@@ -15,14 +15,20 @@
   <dt><%= video_embed_tag(@screencast.embed).html_safe %></dt>
 </dl>
 
-<div class="form-actions">
-  <%= link_to t('.back', :default => t("helpers.links.back")),
-              screencasts_path, :class => 'btn'  %>
-  <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_screencast_path(@screencast), :class => 'btn' %>
-  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              screencast_path(@screencast),
-              :method => 'delete',
-              :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
-              :class => 'btn btn-danger' %>
+<div class="rating">
+Average Rating
+<%= @screencast.ratings %>	
+	
+Rate this screencast
+<%= form_for @rating do |f| %>
+	<%= f.hidden_field :screencast_id %>
+	<%= f.select(:stars, options_for_select([1,2,3,4,5])) %>
+	<%= f.submit "Rate!" %>
+<% end %>
+
 </div>
+
+<% if User.find(session[:user_id]).admin == true %>
+  <%= link_to "Edit", edit_screencast_path(@screencast) %>
+  <%= link_to "Delete", screencast_path(@screencast) %>
+<% end %>
