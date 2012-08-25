@@ -9,7 +9,14 @@ class Screencast < ActiveRecord::Base
   belongs_to :company
 
   # mount_uploader :video, VideoUploader
-    
+  
+  def avg_rating
+    stars_array = []
+    ratings.each do |rating|
+      stars_array << rating.stars
+    end
+    return stars_array.inject{ |sum, el| sum + el }.to_f / stars_array.size
+  end
   
 
 end

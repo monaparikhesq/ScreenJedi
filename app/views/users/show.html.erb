@@ -9,7 +9,7 @@
   <dd><%= @user.email %></dd>
 </dl>
 
-
+<% if @user.company %>
 <h2>Company Videos</h2>
 <div class="video_block">
 <% @user.company.screencasts.each do |screencast| %>
@@ -32,8 +32,9 @@
 	<hr>
     <% end %>
 </div>
+<% end %>
 
-
+<% if @user.subscriptions %>
 <h2>Favorite Screencasts</h2>
 <div class="sub_block">
 <% @user.subscriptions.each do |subscription| %>
@@ -56,7 +57,7 @@
 	<hr>
     <% end %>
 </div>
-
+<% end %>
 
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),

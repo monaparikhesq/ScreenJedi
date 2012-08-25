@@ -41,13 +41,14 @@ class RatingsController < ApplicationController
   # POST /ratings.json
   def create
     @rating = Rating.new(params[:rating])
+    @rating.user_id = session[:user_id]
 
     respond_to do |format|
       if @rating.save
-        format.html { redirect_to @rating, notice: 'Rating was successfully created.' }
-        format.json { render json: @rating, status: :created, location: @rating }
+        format.html { redirect_to @rating.screencast, notice: 'Rating was successfully created.' }
+        format.json { render json: @rating.screencast, status: :created, location: @rating }
       else
-        format.html { render action: "new" }
+        format.html { redirect_to screencast_url(params[:screencast_id]) }
         format.json { render json: @rating.errors, status: :unprocessable_entity }
       end
     end
