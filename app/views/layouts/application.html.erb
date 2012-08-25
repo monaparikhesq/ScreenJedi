@@ -25,7 +25,9 @@ data-target=".nav-collapse">
 			<div class="nav-collapse">
 				<ul class="nav">
 					<li><%= link_to "Browse Screencasts", screencasts_path %></li>
-					<li><%= link_to "Create A Screencast"%></li>
+					<% if session[:user_id] && User.find(session[:user_id]).admin == true %>
+					<li><%= link_to "Create A Screencast", new_screencast_url %></li>
+					<% end %>
 					<li><%= link_to "Become a ScreenJedi", signup_url %>
 					<li><%=link_to "Contact Us"%></li>
 					<% if session[:user_id] %>

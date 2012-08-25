@@ -1,10 +1,20 @@
 class ScreencastsController < ApplicationController
   # GET /screencasts
   # GET /screencasts.json
-  before_filter :require_login_admin, :only => [:new, :create, :destroy]
+  before_filter :require_login_admin, :only => [:new]
+  before_filter :require_login_admin_co, :only => [:edit, :destroy]
   
   def require_login_admin
-    if !session[:user_id].present? || User.find(session[:user_id]).admin == false
+    if !session[:user_id].present? || 
+      User.find(session[:user_id]).admin == false
+      redirect_to user_url(session[:user_id]), notice: 'Fuck you!'
+    end
+  end
+  
+  def require_login_admin_co
+    if !session[:user_id].present? || 
+      User.find(session[:user_id]).admin == false ||
+      User.find(session[:user_id]).company.id != Screencast.find(params[:id]).company.id
       redirect_to user_url(session[:user_id]), notice: 'Fuck you!'
     end
   end
