@@ -7,6 +7,8 @@ class Screencast < ActiveRecord::Base
   has_many :taggings
   has_many :subscriptions
   belongs_to :company
+
+  # mount_uploader :video, VideoUploader
     
   
 
