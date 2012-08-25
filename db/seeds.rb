@@ -86,6 +86,12 @@ userlist.each do |user|
                     :user_id => user.id)
 end
 
+puts "Adding companies to screencasts"
+Screencast.all.each do |scast|
+  scast.company_id = co.sample.id
+  scast.save
+end
+
 
 
 
