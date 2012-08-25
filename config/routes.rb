@@ -1,7 +1,10 @@
 Screenjedi::Application.routes.draw do
+
+  get '/' => 'screencasts#index'
+
   get("/screenjedi", :controller => 'screenjedi', :action => 'index' )
   
-  root :to => "Screencasts#index"
+  
   
   get 'signin' => 'sessions#new', :as => :signin
   post 'sessions/create' => 'sessions#create'
