@@ -7,7 +7,7 @@ class ScreencastsController < ApplicationController
   def require_login_admin
     if !session[:user_id].present? || 
       User.find(session[:user_id]).admin == false
-      redirect_to user_url(session[:user_id]), notice: 'Fuck you!'
+      redirect_to root_url, notice: 'Fuck you!'
     end
   end
   
@@ -15,7 +15,7 @@ class ScreencastsController < ApplicationController
     if !session[:user_id].present? || 
       User.find(session[:user_id]).admin == false ||
       User.find(session[:user_id]).company.id != Screencast.find(params[:id]).company.id
-      redirect_to user_url(session[:user_id]), notice: 'Fuck you!'
+      redirect_to root_url, notice: 'Fuck you!'
     end
   end
   
