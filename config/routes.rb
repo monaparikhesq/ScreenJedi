@@ -1,5 +1,7 @@
 Screenjedi::Application.routes.draw do
 
+  resources :follows
+
   get '/' => 'screencasts#index'
 
   get("/screenjedi", :controller => 'screenjedi', :action => 'index' )
