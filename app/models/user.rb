@@ -10,5 +10,5 @@ class User < ActiveRecord::Base
   has_many :subscriptions
   has_many :tags, :through => :subscriptions
   has_one :membership
-  has_one :company :through => :membership
+  has_one :company, :through => :membership
 end
