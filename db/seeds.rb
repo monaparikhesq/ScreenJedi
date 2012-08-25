@@ -6,6 +6,7 @@ Subscription.destroy_all
 Note.destroy_all
 Rating.destroy_all
 
+
 puts "Creating users."
 100.times do |i|
   User.create(:email => "user#{i}@gmail.com", 
@@ -68,3 +69,17 @@ Screencast.all.each do |screencast|
                         :user_id => user.id)
   end
 end
+
+puts "Creating companies."
+100.times do |i|
+  Company.create(:name => "Your Company Name")
+end
+
+
+
+
+
+
+
+
+
