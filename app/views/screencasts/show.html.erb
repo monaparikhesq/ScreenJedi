@@ -15,24 +15,35 @@
   <dt><%= video_embed_tag(@screencast.embed).html_safe %></dt>
 </dl>
 
-<div class="rating">
+<div class="avg_rating">
 Average Rating
 <% if @screencast.ratings %>
 <%= @screencast.avg_rating %>	
 <% else %>
 This screencast has no ratings
 <% end %>
-	
-Rate this screencast
-<%= form_for @rating do |f| %>
-	<%= f.hidden_field :screencast_id %>
-	<%= f.select(:stars, options_for_select([1,2,3,4,5])) %>
-	<%= f.submit "Rate!" %>
-<% end %>
+</div>
 
+<div class="rating">
+<% if @screencast.ratings.find_by_user_id(session[:user_id]) %>
+Edit Your Rating
+	<%= form_tag "/rate/#{@screencast.ratings.find_by_user_id(session[:user_id]).id}", :method => :put do %>
+		<%= select_tag :stars, options_for_select([1,2,3,4,5]) %>
+		<%= submit_tag "Rate" %>
+	<% end %>
+<% else %>
+Rate this screencast
+	<%= form_for @rating do |f| %>
+		<%= f.hidden_field :screencast_id %>
+		<%= f.select(:stars, options_for_select([1,2,3,4,5])) %>
+		<%= f.submit "Rate!" %>
+	<% end %>
+<% end %>
 </div>
 
 <% if User.find(session[:user_id]).admin == true %>
   <%= link_to "Edit", edit_screencast_path(@screencast) %>
   <%= link_to "Delete", screencast_path(@screencast) %>
 <% end %>
+
+<%= link_to "Back", root_url %>
