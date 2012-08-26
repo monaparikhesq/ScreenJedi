@@ -17,7 +17,11 @@
 
 <div class="rating">
 Average Rating
-<%= @screencast.ratings %>	
+<% if @screencast.ratings %>
+<%= @screencast.avg_rating %>	
+<% else %>
+This screencast has no ratings
+<% end %>
 	
 Rate this screencast
 <%= form_for @rating do |f| %>
