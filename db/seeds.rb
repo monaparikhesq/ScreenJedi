@@ -26,11 +26,12 @@ tags.each do |tag|
 end
 
 puts "Creating screencasts."
+vids = ["http://www.youtube.com/watch?v=sdyC1BrQd6g", "http://www.youtube.com/watch?v=ZP7K9SycELA"]
 50.times do |i|
   Screencast.create(:title => "Screencast #{i}", 
                     :description => "Lorem Ipsum #{i}", 
                     :length => rand(360), 
-                    :embed => "http://www.youtube.com/watch?v=sdyC1BrQd6g")
+                    :embed => vids.sample)
 end
 
 taglist = Tag.all
@@ -43,16 +44,6 @@ Screencast.all.each do |screencast|
 end
 
 
-puts "Creating notes."
-notes = ["Lorem Ipsum"]
-screencasts = Screencast.all
-User.all.each do |user|
-  screencasts.sample(rand(5)).each do |screencast|
-    Note.create :screencast_id => screencast.id,
-                :user_id => user.id,
-                :body => notes.sample
-  end
-end
 
 userlist = User.all
 puts "Creating subscriptions."
@@ -90,6 +81,17 @@ User.all.each do |user|
                   :stars => rand(1..6)
   end
 end
+
+puts "Creating notes."
+screencasts = Screencast.all
+User.all.each do |user|
+  user.company.screencasts.sample(rand(5)).each do |screencast|
+    Note.create   :screencast_id => screencast.id,
+                  :user_id => user.id,
+                  :body => "Lorem Ipsum"
+  end
+end
+  
 
 
 
