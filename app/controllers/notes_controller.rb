@@ -31,6 +31,31 @@ class NotesController < ApplicationController
       format.json { render json: @note }
     end
   end
+  
+  def editnote
+    @note = Note.find(params[:id])
+    @note.body = params[:body]
+    @note.save
+    
+    respond_to do |format|
+      format.js
+      format.html
+    end
+    
+  end
+  
+  def newnote
+    @note = Note.new
+    @note.user_id = session[:user_id]
+    @note.screencast_id = params[:screencast_id]
+    @note.body = params[:body]
+    @note.save
+    
+    respond_to do |format|
+      format.js
+      format.html { redirect_to screencast_url(params[:screencast_id]) }
+    end
+  end
 
   # GET /notes/1/edit
   def edit

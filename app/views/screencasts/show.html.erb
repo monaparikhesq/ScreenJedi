@@ -15,6 +15,39 @@
   <dt><%= video_embed_tag(@screencast.embed).html_safe %></dt>
 </dl>
 
+<div class="subscribe">
+	<% if @screencast.subscriptions.find_by_user_id(session[:user_id])%>
+		<%= button_to "Delete Bookmark", 
+		{ :action => "destroy", :id => @screencast.subscriptions.find_by_user_id(session[:user_id]).id, :controller => :subscriptions },
+	 	:method => :delete %>
+	<% else %>
+		<%= button_to "Bookmark This", 
+			{ :action => "add_sub", :screencast_id => @screencast.id, :controller => :subscriptions },
+		 	:method => :post %>
+	<% end %>
+</div>
+
+<div class="note">
+	<% if @screencast.notes.find_by_user_id(session[:user_id]).present? %>
+		<%= @screencast.notes.find_by_user_id(session[:user_id]).body %></br>
+			Edit Note
+			<%= form_tag "/editnote/#{@screencast.notes.find_by_user_id(session[:user_id]).id}", :method => :put do %>
+				<%= hidden_field_tag :screencast_id, @screencast.id %>
+				<%= text_field_tag :body %>
+				<%= submit_tag "Change" %>
+			<% end %>
+			<% else %>
+			<div id="body_input">
+			Add Note
+			<%= form_tag "/newnote/", :method => :post, remote: true do %>
+				<%= hidden_field_tag :screencast_id, @screencast.id %>
+				<%= text_field_tag :body %>
+				<%= submit_tag "Make Note" %>
+			<% end %>
+			</div>
+	<% end %>
+</div>
+
 <div class="avg_rating">
 Average Rating
 <% if @screencast.ratings %>

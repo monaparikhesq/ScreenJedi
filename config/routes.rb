@@ -8,7 +8,7 @@ Screenjedi::Application.routes.draw do
 
   get("/screenjedi", :controller => 'screenjedi', :action => 'index' )
   
-  
+  post '/subscriptions/addsub' => 'subscriptions#add_sub', :as => :add_sub
   
   get 'signin' => 'sessions#new', :as => :signin
   post 'sessions/create' => 'sessions#create'
@@ -24,7 +24,8 @@ Screenjedi::Application.routes.draw do
   put '/rate/:id' => 'ratings#update_stars'
   resources :ratings
   
-
+  put '/editnote/:id' => 'notes#editnote', :as => :editnote
+  post 'newnote' => 'notes#newnote', :as => :newnote
   resources :notes
 
   resources :users

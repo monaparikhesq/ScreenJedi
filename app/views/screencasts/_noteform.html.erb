@@ -1,0 +1,5 @@
+<%= form_for(@note, :remote => true) do |f| %>
+	<%= f.hidden_field :screencast_id, :value => @screencast.id %>
+    <%= f.text_field :description %>
+	<%= f.submit "Add Note" %>
+<% end %>

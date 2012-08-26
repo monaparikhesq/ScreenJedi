@@ -3,4 +3,6 @@ class Note < ActiveRecord::Base
   
   belongs_to :screencast
   belongs_to :user
+  
+  validates_uniqueness_of :user_id, :scope => :screencast_id
 end

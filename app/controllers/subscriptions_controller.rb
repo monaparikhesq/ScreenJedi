@@ -36,6 +36,14 @@ class SubscriptionsController < ApplicationController
   def edit
     @subscription = Subscription.find(params[:id])
   end
+  
+  def add_sub
+    s = Subscription.new
+    s.user_id = session[:user_id]
+    s.screencast_id = params[:screencast_id]
+    s.save
+    redirect_to s.screencast
+  end
 
   # POST /subscriptions
   # POST /subscriptions.json
@@ -76,7 +84,7 @@ class SubscriptionsController < ApplicationController
     @subscription.destroy
 
     respond_to do |format|
-      format.html { redirect_to subscriptions_url }
+      format.html { redirect_to root_url }
       format.json { head :no_content }
     end
   end
