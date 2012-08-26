@@ -21,7 +21,7 @@ Screenjedi::Application.routes.draw do
 
   resources :tags
 
-  post '/rate' => 'ratings#create'
+  put '/rate/:id' => 'ratings#update_stars'
   resources :ratings
   
 

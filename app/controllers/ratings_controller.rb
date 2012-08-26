@@ -48,7 +48,7 @@ class RatingsController < ApplicationController
         format.html { redirect_to @rating.screencast, notice: 'Rating was successfully created.' }
         format.json { render json: @rating.screencast, status: :created, location: @rating }
       else
-        format.html { redirect_to screencast_url(params[:screencast_id]) }
+        format.html { redirect_to screencast_url(params[:rating][:screencast_id]) }
         format.json { render json: @rating.errors, status: :unprocessable_entity }
       end
     end
@@ -69,7 +69,14 @@ class RatingsController < ApplicationController
       end
     end
   end
-
+  
+  def update_stars
+    @rating = Rating.find(params[:id])
+    @rating.update_attribute(:stars, params[:stars])
+    @rating.save
+    redirect_to @rating.screencast
+  end
+  
   # DELETE /ratings/1
   # DELETE /ratings/1.json
   def destroy
