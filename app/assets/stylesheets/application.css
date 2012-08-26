@@ -133,7 +133,29 @@ h1 {
 h2 {
 	color: #94BA65;
 	font-size: 1.5em;
+	padding-bottom: 20px;
 }
+
+/* FORMS */
+
+.form-field {
+	margin-bottom: 20px;
+}
+
+.form-label, .form-field {
+	display: block;
+}
+
+.form-label {
+	padding-bottom: 6px;
+}
+
+.cancel-button {
+	position: relative;
+	top: 2px;
+	padding-left: 6px;
+}
+
 
 /* NAV */
 
