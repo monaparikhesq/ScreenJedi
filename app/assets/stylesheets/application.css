@@ -92,6 +92,10 @@ html { font-size: 100%; overflow-y: scroll; -webkit-text-size-adjust: 100%; -ms-
 
 /* GLOBAL */
 
+html, body {
+	height: 100%;
+}
+
 .group:before,
 .group:after {
     content: "";
@@ -116,6 +120,7 @@ body {
 	margin: 0 auto;
 	background-color: white;
 	padding: 20px;
+	height: 100%;
 }
 
 a {
