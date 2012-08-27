@@ -27,6 +27,7 @@ class NotesController < ApplicationController
     @note = Note.new
 
     respond_to do |format|
+      format.js
       format.html # new.html.erb
       format.json { render json: @note }
     end
@@ -36,6 +37,7 @@ class NotesController < ApplicationController
     @note = Note.find(params[:id])
     @note.body = params[:body]
     @note.save
+    @screencast = @note.screencast
     
     respond_to do |format|
       format.js
@@ -60,16 +62,20 @@ class NotesController < ApplicationController
   # GET /notes/1/edit
   def edit
     @note = Note.find(params[:id])
+    @screencast = @note.screencast
   end
 
   # POST /notes
   # POST /notes.json
   def create
     @note = Note.new(params[:note])
+    @note.user_id = session[:user_id]
+    @screencast = @note.screencast
 
     respond_to do |format|
       if @note.save
-        format.html { redirect_to @note, notice: 'Note was successfully created.' }
+        format.js
+        format.html { redirect_to @note.screencast, notice: 'Note was successfully created.' }
         format.json { render json: @note, status: :created, location: @note }
       else
         format.html { render action: "new" }

@@ -1,0 +1,3 @@
+<div id="body_input">
+<%=@note.body%> <%= link_to 'Edit Note', edit_note_url(@screencast.notes.find_by_user_id(session[:user_id]).id), :method => :get, :remote => true %>
+</div>

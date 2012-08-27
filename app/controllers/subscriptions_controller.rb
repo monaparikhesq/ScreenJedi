@@ -38,12 +38,18 @@ class SubscriptionsController < ApplicationController
   end
   
   def add_sub
-    s = Subscription.new
-    s.user_id = session[:user_id]
-    s.screencast_id = params[:screencast_id]
-    s.save
-    redirect_to s.screencast
+    @subscription = Subscription.new
+    @subscription.user_id = session[:user_id]
+    @subscription.screencast_id = params[:screencast_id]
+    @subscription.save
+    @screencast = @subscription.screencast
+    respond_to do |format|
+      format.js
+      format.html {redirect_to @subscription.screencast}
+    end
+    
   end
+  
 
   # POST /subscriptions
   # POST /subscriptions.json
@@ -81,9 +87,12 @@ class SubscriptionsController < ApplicationController
   # DELETE /subscriptions/1.json
   def destroy
     @subscription = Subscription.find(params[:id])
+    @screencast = @subscription.screencast
     @subscription.destroy
+    @screencast
 
     respond_to do |format|
+      format.js
       format.html { redirect_to root_url }
       format.json { head :no_content }
     end

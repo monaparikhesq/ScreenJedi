@@ -42,6 +42,8 @@ class ScreencastsController < ApplicationController
     @screencast = Screencast.find(params[:id])
     @rating = Rating.new
     @rating.screencast = @screencast
+    @note = Note.new
+    @note.screencast_id = @screencast.id
 
     respond_to do |format|
       format.html # show.html.erb

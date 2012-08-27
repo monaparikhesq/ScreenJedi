@@ -1,0 +1,3 @@
+<%= button_to "Bookmark This", 
+	{ :action => "add_sub", :screencast_id => @screencast.id, :controller => :subscriptions },
+ 	:method => :post, :remote => true %>

@@ -17,43 +17,37 @@
 
 <div class="subscribe">
 	<% if @screencast.subscriptions.find_by_user_id(session[:user_id])%>
-		<%= button_to "Delete Bookmark", 
-		{ :action => "destroy", :id => @screencast.subscriptions.find_by_user_id(session[:user_id]).id, :controller => :subscriptions },
-	 	:method => :delete %>
+	<div id="bookmark">
+		<%= render 'deletebutton' %>
+	</div>
 	<% else %>
-		<%= button_to "Bookmark This", 
-			{ :action => "add_sub", :screencast_id => @screencast.id, :controller => :subscriptions },
-		 	:method => :post %>
+	<div id="bookmark">
+		<%= render 'markbutton' %>
+	</div>
 	<% end %>
 </div>
 
 <div class="note">
 	<% if @screencast.notes.find_by_user_id(session[:user_id]).present? %>
-		<%= @screencast.notes.find_by_user_id(session[:user_id]).body %></br>
-			Edit Note
-			<%= form_tag "/editnote/#{@screencast.notes.find_by_user_id(session[:user_id]).id}", :method => :put do %>
-				<%= hidden_field_tag :screencast_id, @screencast.id %>
-				<%= text_field_tag :body %>
-				<%= submit_tag "Change" %>
-			<% end %>
-			<% else %>
+		<div id="body_input">
+		<%= @screencast.notes.find_by_user_id(session[:user_id]).body %>
+		<%= link_to 'Edit Note', edit_note_url(@screencast.notes.find_by_user_id(session[:user_id]).id), :method => :get, :remote => true %>
+		</div>
+		<% else %>
 			<div id="body_input">
-			Add Note
-			<%= form_tag "/newnote/", :method => :post, remote: true do %>
-				<%= hidden_field_tag :screencast_id, @screencast.id %>
-				<%= text_field_tag :body %>
-				<%= submit_tag "Make Note" %>
-			<% end %>
+			
+			<%= render 'noteform' %>
+		
 			</div>
-	<% end %>
+	<% end %>	
 </div>
 
 <div class="avg_rating">
-Average Rating
-<% if @screencast.ratings %>
+Average Rating:
+<% if @screencast.ratings.present? %>
 <%= @screencast.avg_rating %>	
 <% else %>
-This screencast has no ratings
+This screencast has no ratings! Let us know how you feel about it.
 <% end %>
 </div>
 
@@ -61,7 +55,7 @@ This screencast has no ratings
 <% if @screencast.ratings.find_by_user_id(session[:user_id]) %>
 Edit Your Rating
 	<%= form_tag "/rate/#{@screencast.ratings.find_by_user_id(session[:user_id]).id}", :method => :put do %>
-		<%= select_tag :stars, options_for_select([1,2,3,4,5]) %>
+		<%= select_tag :stars, options_for_select([1,2,3,4,5], :selected => @screencast.ratings.find_by_user_id(session[:user_id]).stars) %>
 		<%= submit_tag "Rate" %>
 	<% end %>
 <% else %>
