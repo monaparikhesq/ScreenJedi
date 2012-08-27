@@ -18,7 +18,8 @@ type="text/javascript"></script>
 			<ul>
 				<li>
 					<% if session[:user_id] && User.find(session[:user_id]).admin == true %>
-						<%= link_to "Create A Screencast", new_screencast_url %>
+						<li><%= link_to "#{Company.find(Membership.find_by_user_id(2).company_id).name} Members", "#" %></li>
+						<li><%= link_to "Create A Screencast", new_screencast_url %></li>
 					<% end %>
 				</li>
 				<li>
