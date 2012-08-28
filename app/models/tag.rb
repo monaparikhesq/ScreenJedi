@@ -7,4 +7,5 @@ class Tag < ActiveRecord::Base
   
   # gsub(" ","").split(",")
   
+
 end

@@ -12,6 +12,7 @@ class VideoUploader < CarrierWave::Uploader::Base
 
   # Choose what kind of storage to use for this uploader:
   storage :fog
+
   
   # storage :fog
 

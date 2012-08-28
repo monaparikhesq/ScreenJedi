@@ -9,6 +9,7 @@ gem 'sqlite3'
 gem 'carrierwave'
 # gem 'aws-s3'
 # gem 'aws-sdk'
+
 gem 'fog'
 
 

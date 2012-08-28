@@ -1,4 +1,4 @@
-## CarrierWave.configure do |config|
+# CarrierWave.configure do |config|
 
 # 	if Rails.env.production? 
 # 		#allows assets to be saved on s3 while in production/heroku
