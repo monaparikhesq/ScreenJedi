@@ -1,0 +1,16 @@
+<%= form_tag('/sessions/create') do %>
+  <h2>Sign In</h2>
+  <form>
+    <div class="form-field">
+      <%= label_tag :email, nil, :class => "form-label" %>
+      <%= text_field_tag :email, nil, :class => "form-field" %>
+    </div>
+
+    <div class="form-field">
+      <%= label_tag :password, nil, :class => "form-label" %>
+      <%= password_field_tag :password, nil, :class => "form-field" %>
+    </div>
+
+  <%= submit_tag "Sign In" %>
+<% end %>
+</form>

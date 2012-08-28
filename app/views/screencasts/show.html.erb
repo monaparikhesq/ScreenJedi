@@ -1,0 +1,79 @@
+<%- model_class = Screencast -%>
+<div class="page-header">
+  <h2><%=t '.title', :default => model_class.model_name.human %></h2>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong>Title:</strong></dt>
+  <dd><%= @screencast.title %></dd>
+  <dt><strong>Description:</strong></dt>
+  <dd><%= @screencast.description %></dd>
+  <dt><strong>Length:</strong></dt>
+  <dd><%= @screencast.length %></dd>
+  <dt><strong>Uploader:</strong></dt>
+  <dd><%= @screencast.company.name %></dd>
+  <dt><%= @screencast.video %></dt>
+</dl>
+
+<div class="subscribe">
+	<% if @screencast.subscriptions.find_by_user_id(session[:user_id])%>
+	<div id="bookmark">
+		<%= render 'deletebutton' %>
+	</div>
+	<% else %>
+	<div id="bookmark">
+		<%= render 'markbutton' %>
+	</div>
+	<% end %>
+</div>
+
+<div class="note">
+	<% if @screencast.notes.find_by_user_id(session[:user_id]).present? %>
+		<div id="body_input">
+		<%= @screencast.notes.find_by_user_id(session[:user_id]).body %>
+		<%= link_to 'Edit Note', edit_note_url(@screencast.notes.find_by_user_id(session[:user_id]).id), :method => :get, :remote => true %>
+		</div>
+		<% else %>
+			<div id="body_input">
+			
+			<%= render 'noteform' %>
+		
+			</div>
+	<% end %>	
+</div>
+
+
+<div id="whole_rating">
+	<div id="avg_rating">
+		Average Rating:
+		<% if @screencast.ratings.present? %>
+		<%= @screencast.avg_rating %>	
+		<% else %>
+		This screencast has no ratings! Let us know how you feel about it.
+		<% end %>
+	</div>
+
+	<div id="rating">
+		<% if @screencast.ratings.find_by_user_id(session[:user_id]) %>
+			Edit Your Rating
+			<%= form_tag "/rate/#{@screencast.ratings.find_by_user_id(session[:user_id]).id}", :method => :put, :remote => true do %>
+			<%= select_tag :stars, options_for_select([1,2,3,4,5], :selected => @screencast.ratings.find_by_user_id(session[:user_id]).stars) %>
+			<%= submit_tag "Rate" %>
+			<% end %>
+		<% else %>
+			Rate this screencast
+			<%= form_for @rating, :remote => true do |f| %>
+			<%= f.hidden_field :screencast_id %>
+			<%= f.select(:stars, options_for_select([1,2,3,4,5])) %>
+			<%= f.submit "Rate!" %>
+			<% end %>
+		<% end %>
+	</div>
+</div>
+
+<% if User.find(session[:user_id]).admin == true %>
+  <%= link_to "Edit", edit_screencast_path(@screencast) %>
+  <%= link_to "Delete", screencast_path(@screencast) %>
+<% end %>
+
+<%= link_to "Back", root_url %>

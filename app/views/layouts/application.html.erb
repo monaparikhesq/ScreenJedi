@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ScreenJedi</title>
+  <!--[if lt IE9]>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"
+type="text/javascript"></script>
+	<![endif]-->
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body class="group">
+	<div class="container">
+	  <nav class="group">
+			<h1><%= link_to "ScreenJedi", root_url %></h1>
+			<ul>
+				<li>
+					<% if session[:user_id] && User.find(session[:user_id]).admin == true %>
+						<% company_id = Company.find(Membership.find_by_user_id(session[:user_id]).company_id) %>
+						<li><%= link_to "#{Company.find(company_id).name} Members", "/members/#{company_id.id}" %></li>
+
+						<li><%= link_to "Create A Screencast", new_screencast_url %></li>
+					<% end %>
+				</li>
+				<li>
+					<% if session[:user_id] %> 
+						<%=link_to "Sign Out", signout_url %> 
+					<% else %>
+						<li><%= link_to "Sign Up", signup_url %></li>
+						<li><%=link_to "Sign In", signin_url %></li> 
+					<% end %>
+				</li>
+				<li><%=link_to "Contact Us"%></li>
+			</ul>
+		</nav>
+
+		<%= yield %>
+	</div> <!-- container ******************************************************************-->
+	
+	<!-- <footer>
+	  <p>About Us</p>
+	  ScreenJedi is a web app that allows you to create, post, store and view screencasts.
+	</footer> -->
+	</body>
+</html>
+

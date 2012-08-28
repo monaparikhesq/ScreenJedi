@@ -1,0 +1,16 @@
+<div id="whole_rating">
+	
+	<div id="avg_rating">
+		Average Rating:
+		<%= @screencast.avg_rating %>	
+	</div>
+
+	<div id="rating">
+		Edit Rating
+		<%= form_tag "/rate/#{@screencast.ratings.find_by_user_id(session[:user_id]).id}", :method => :put, :remote => true do %>
+			<%= select_tag :stars, options_for_select([1,2,3,4,5], :selected => @screencast.ratings.find_by_user_id(session[:user_id]).stars) %>
+			<%= submit_tag "Rate" %>
+		<% end %>
+	</div>
+
+</div>

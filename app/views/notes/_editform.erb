@@ -1,0 +1,7 @@
+<div id="body_input">
+<%= form_tag "/editnote/#{@screencast.notes.find_by_user_id(session[:user_id]).id}", :method => :put, :remote => true do %>
+	<%= hidden_field_tag :screencast_id, @screencast.id %>
+	<%= text_field_tag :body %>
+	<%= submit_tag "Change" %>
+<% end %>
+</div>
