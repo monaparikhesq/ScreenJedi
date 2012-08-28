@@ -42,9 +42,11 @@ class RatingsController < ApplicationController
   def create
     @rating = Rating.new(params[:rating])
     @rating.user_id = session[:user_id]
+    @screencast = @rating.screencast
 
     respond_to do |format|
       if @rating.save
+        format.js
         format.html { redirect_to @rating.screencast, notice: 'Rating was successfully created.' }
         format.json { render json: @rating.screencast, status: :created, location: @rating }
       else
@@ -74,7 +76,12 @@ class RatingsController < ApplicationController
     @rating = Rating.find(params[:id])
     @rating.update_attribute(:stars, params[:stars])
     @rating.save
-    redirect_to @rating.screencast
+    @screencast = @rating.screencast
+    
+    respond_to do |format|
+      format.js
+      format.html { redirect_to @rating.screencast }
+    end
   end
   
   # DELETE /ratings/1

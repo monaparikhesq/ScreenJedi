@@ -4,8 +4,6 @@ Screenjedi::Application.routes.draw do
   
   resources :follows
 
-  get '/' => 'screencasts#index'
-
   get("/screenjedi", :controller => 'screenjedi', :action => 'index' )
   
   post '/subscriptions/addsub' => 'subscriptions#add_sub', :as => :add_sub

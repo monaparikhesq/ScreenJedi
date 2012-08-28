@@ -42,30 +42,33 @@
 	<% end %>	
 </div>
 
-<div class="avg_rating">
-Average Rating:
-<% if @screencast.ratings.present? %>
-<%= @screencast.avg_rating %>	
-<% else %>
-This screencast has no ratings! Let us know how you feel about it.
-<% end %>
-</div>
 
-<div class="rating">
-<% if @screencast.ratings.find_by_user_id(session[:user_id]) %>
-Edit Your Rating
-	<%= form_tag "/rate/#{@screencast.ratings.find_by_user_id(session[:user_id]).id}", :method => :put do %>
-		<%= select_tag :stars, options_for_select([1,2,3,4,5], :selected => @screencast.ratings.find_by_user_id(session[:user_id]).stars) %>
-		<%= submit_tag "Rate" %>
-	<% end %>
-<% else %>
-Rate this screencast
-	<%= form_for @rating do |f| %>
-		<%= f.hidden_field :screencast_id %>
-		<%= f.select(:stars, options_for_select([1,2,3,4,5])) %>
-		<%= f.submit "Rate!" %>
-	<% end %>
-<% end %>
+<div id="whole_rating">
+	<div id="avg_rating">
+		Average Rating:
+		<% if @screencast.ratings.present? %>
+		<%= @screencast.avg_rating %>	
+		<% else %>
+		This screencast has no ratings! Let us know how you feel about it.
+		<% end %>
+	</div>
+
+	<div id="rating">
+		<% if @screencast.ratings.find_by_user_id(session[:user_id]) %>
+			Edit Your Rating
+			<%= form_tag "/rate/#{@screencast.ratings.find_by_user_id(session[:user_id]).id}", :method => :put, :remote => true do %>
+			<%= select_tag :stars, options_for_select([1,2,3,4,5], :selected => @screencast.ratings.find_by_user_id(session[:user_id]).stars) %>
+			<%= submit_tag "Rate" %>
+			<% end %>
+		<% else %>
+			Rate this screencast
+			<%= form_for @rating, :remote => true do |f| %>
+			<%= f.hidden_field :screencast_id %>
+			<%= f.select(:stars, options_for_select([1,2,3,4,5])) %>
+			<%= f.submit "Rate!" %>
+			<% end %>
+		<% end %>
+	</div>
 </div>
 
 <% if User.find(session[:user_id]).admin == true %>
