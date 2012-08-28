@@ -9,6 +9,11 @@ class Screencast < ActiveRecord::Base
   belongs_to :company
 
   mount_uploader :video, VideoUploader
+
+  # config.cache_classes = true
+
+  # config.cache_classes = false
+  # config.reload_classes_only_on_change = false
   
   def avg_rating
     stars_array = []
