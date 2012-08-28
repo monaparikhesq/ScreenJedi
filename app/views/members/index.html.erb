@@ -1,0 +1,8 @@
+
+<h2><%= "#{Company.find(@company_id).name} Members"%></h2>
+
+<% @members %>
+
+<% @members.each do |member| %>
+	<p><%= "#{member.first.first_name} #{member.first.last_name}" %></p>
+<% end %>

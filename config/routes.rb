@@ -14,6 +14,8 @@ Screenjedi::Application.routes.draw do
   post 'sessions/create' => 'sessions#create'
   get 'sessions/destroy' => 'sessions#destroy', :as => :signout
 
+  get '/members/:id' => 'members#index'
+
   
   resources :subscriptions
 
