@@ -1,0 +1,41 @@
+body {
+  color: #666;
+  background: url(/assets/diagmonds.png);
+  font-family: 'Open Sans', sans-serif;
+}
+
+h1, h2, h3, h4 {
+  color: #ccc;
+}
+
+h1 {
+  font-size: 2em;
+  padding: 20px 0;
+}
+
+h2 {
+  font-size: 1.5em;
+  padding-bottom: 10px;
+}
+
+a {
+  color: #3C5279;
+}
+
+.form-field {
+  margin-bottom: 20px;
+}
+
+.form-label, .form-field {
+  display: block;
+}
+
+.form-label {
+  padding-bottom: 6px;
+}
+
+.cancel-button {
+  position: relative;
+  top: 2px;
+  padding-left: 6px;
+}

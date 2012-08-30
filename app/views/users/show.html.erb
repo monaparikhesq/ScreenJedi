@@ -1,72 +1,45 @@
 <%- model_class = User -%>
-<div class="page-header">
+
+<section>
   <h2><%=t '.title', :default => model_class.model_name.human %></h2>
-</div>
+  <ul>
+    <li><%= @user.first_name %> <%= @user.last_name %></li>
+    <!-- <li><#%= model_class.human_attribute_name(:email) %></li> -->
+    <li><%= @user.email %></li>
+  </ul>
+</section>
 
-<dl class="dl-horizontal">
-  <dt><strong><%= @user.first_name %> <%= @user.last_name %></strong></dt>
-  <dt><strong><%= model_class.human_attribute_name(:email) %>:</strong></dt>
-  <dd><%= @user.email %></dd>
-</dl>
-
-<% if @user.company %>
-<h2>Company Videos</h2>
-<div class="video_block">
-<% @user.company.screencasts.each do |screencast| %>
-   <div class="video">
-        <div class="vid_embed">
-	        <%= screencast.embed %>
-		<div class="vid_title">
-			<%= link_to screencast.title, screencast_path(screencast) %>
-		</div>
-		<div class="vid_desc">
-        	<%= screencast.description %>
-		</div>
-		<div class="vid_length">
-	        <%= screencast.length %>
-		</div>
-		<div class="vid_created">
-	        <%= screencast.created_at %>
-	  	</div>
-	</div>
-	<hr>
+<section>
+  <% if @user.company %>
+    <h2>Company Videos</h2>
+    <% @user.company.screencasts.each do |screencast| %>
+      <ul>
+        <!-- <#%= screencast.embed %> -->
+      	<li><%= link_to screencast.title, screencast_path(screencast) %></li>
+      	<li><span class="section-title">Description: </span><%= screencast.description %></li>
+        <li><span class="section-title">Length: </span><%= screencast.length %></li>
+        <!-- <#%= screencast.created_at %> -->
+      </ul>
     <% end %>
-</div>
-<% end %>
+  <% end %>
+</section>
 
-<% if @user.subscriptions %>
-<h2>Bookmarked Screencasts</h2>
-<div class="sub_block">
-<% @user.subscriptions.each do |subscription| %>
-   <div class="video">
-        <div class="vid_embed">
-	        <%= subscription.screencast.embed %>
-		<div class="vid_title">
-			<%= link_to subscription.screencast.title, screencast_path(subscription.screencast) %>
-		</div>
-		<div class="vid_desc">
-        	<%= subscription.screencast.description %>
-		</div>
-		<div class="vid_length">
-	        <%= subscription.screencast.length %>
-		</div>
-		<div class="vid_created">
-	        <%= subscription.screencast.created_at %>
-	  	</div>
-	</div>
-	<hr>
+<section>
+  <% if @user.subscriptions %>
+    <h2>Bookmarked Screencasts</h2>
+    <% @user.subscriptions.each do |subscription| %>
+      <ul>
+        <!-- <#%= subscription.screencast.embed %> -->
+      	<li><%= link_to subscription.screencast.title, screencast_path(subscription.screencast) %></li>
+      	<li><span class="section-title">Description: </span><%= subscription.screencast.description %></li>
+        <li><span class="section-title">Length: </span><%= subscription.screencast.length %></li>
+        <!-- <#%= subscription.screencast.created_at %> -->
+      </ul>
     <% end %>
-</div>
-<% end %>
+  <% end %>
+</section>
 
-<div class="form-actions">
-  <%= link_to t('.back', :default => t("helpers.links.back")),
-              users_path, :class => 'btn'  %>
-  <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_user_path(@user), :class => 'btn' %>
-  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              user_path(@user),
-              :method => 'delete',
-              :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
-              :class => 'btn btn-danger' %>
-</div>
+<!--  <#%= link_to t('.back', :default => t("helpers.links.back")), users_path  %>
+      <#%= link_to t('.edit', :default => t("helpers.links.edit")), edit_user_path(@user) %>
+      <#%= link_to t('.destroy', :default => t("helpers.links.destroy")), user_path(@user), :method => 'delete', :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) %> -->
+  
