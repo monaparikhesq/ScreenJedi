@@ -75,7 +75,7 @@ class ScreencastsController < ApplicationController
 
     respond_to do |format|
       if @screencast.save
-        format.html { redirect_to @screencast, notice: 'Screencast was successfully created.' }
+        format.html { redirect_to new_tag_url(:id => @screencast.id), notice: 'Screencast was successfully created.' }
         format.json { render json: @screencast, status: :created, location: @screencast }
       else
         format.html { render action: "new" }

@@ -1,11 +1,13 @@
 class Tag < ActiveRecord::Base
-  attr_accessible :keyword
+  attr_accessible :keyword, :screencast_id
   
   has_many :taggings
-  has_many :screencasts
-  has_many :users
+  belongs_to :screencast
   
   # gsub(" ","").split(",")
   
+  def make_tags
+     gsub(" ","").split(",")
+  end
 
 end

@@ -3,8 +3,7 @@ class Screencast < ActiveRecord::Base
   
   has_many :notes
   has_many :ratings
-  has_many :tags, :through => :taggings
-  has_many :taggings
+  has_many :tags
   has_many :subscriptions
   belongs_to :company
 

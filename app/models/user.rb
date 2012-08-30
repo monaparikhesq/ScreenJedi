@@ -13,4 +13,7 @@ class User < ActiveRecord::Base
   has_one :company, :through => :membership
   has_many :followers, :class_name => 'Follow', :foreign_key => 'follower_id'
   has_many :followeds, :class_name => 'Follow', :foreign_key => 'followed_id'
+  
+  
+  
 end

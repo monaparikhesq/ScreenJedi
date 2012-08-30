@@ -12,9 +12,17 @@
   <dd><%= @screencast.length %></dd>
   <dt><strong>Uploader:</strong></dt>
   <dd><%= @screencast.company.name %></dd>
-  <dt><%= @screencast.video %></dt>
+  <dt><%= video_tag "#{@screencast.video}", :size => "320x240", :controls => true  %></dt>
 
 </dl>
+
+Tags
+<ul>
+	<% @screencast.tags.each do |tag| %>
+		<%= tag.keyword %> 
+	<% end %>
+</ul>
+<%= link_to "Edit Tags", tags_url(:id => @screencast.id) %>
 
 <div class="subscribe">
 	<% if @screencast.subscriptions.find_by_user_id(session[:user_id])%>

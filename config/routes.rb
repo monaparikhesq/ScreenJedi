@@ -17,8 +17,6 @@ Screenjedi::Application.routes.draw do
   
   resources :subscriptions
 
-  resources :taggings
-
   resources :tags
 
   put '/rate/:id' => 'ratings#update_stars'

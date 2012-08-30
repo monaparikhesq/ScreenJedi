@@ -84,5 +84,6 @@ def video_embed_tag(link)
     return "<embed type='application/pdf' width='300px' height='200px' src=#{url} ></embed>"
     
   end
+  
 
 end

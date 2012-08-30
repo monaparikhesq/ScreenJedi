@@ -1,5 +1,7 @@
 <%= form_for @tag, :html => { :class => 'form-horizontal' } do |f| %>
-  <div class="control-group">
+  
+	<%= f.hidden_field :screencast_id, :value => params[:id] %>
+<div class="control-group">
     <%= f.label :keyword, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :keyword, :class => 'text_field' %>
