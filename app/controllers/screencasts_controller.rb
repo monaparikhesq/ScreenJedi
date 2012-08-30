@@ -44,6 +44,8 @@ class ScreencastsController < ApplicationController
     @rating.screencast = @screencast
     @note = Note.new
     @note.screencast_id = @screencast.id
+    @original_screencast = @screencast.panda_video
+    @h264_encoding = @original_screencast.encodings["h264"]
 
     respond_to do |format|
       format.html # show.html.erb
@@ -72,6 +74,7 @@ class ScreencastsController < ApplicationController
   def create
     @screencast = Screencast.new(params[:screencast])
     @screencast.company_id = User.find(session[:user_id]).company.id
+    @screencast.panda_video_id = params[:video][:panda_video_id]
 
     respond_to do |format|
       if @screencast.save

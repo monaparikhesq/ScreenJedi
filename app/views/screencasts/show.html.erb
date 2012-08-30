@@ -12,7 +12,7 @@
   <dd><%= @screencast.length %></dd>
   <dt><strong>Uploader:</strong></dt>
   <dd><%= @screencast.company.name %></dd>
-  <dt><%= video_tag "#{@screencast.video}", :size => "320x240", :controls => true  %></dt>
+  <dt><%= video_tag "#{@h264_encoding.url}", :size => "320x240", :controls => true  %></dt>
 
 </dl>
 

@@ -12,6 +12,7 @@ gem 'carrierwave'
 
 gem 'fog'
 
+gem 'typhoeus', '~> 0.2.4'
 gem 'panda', '~> 1.5.0'
 
 

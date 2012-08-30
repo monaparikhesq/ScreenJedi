@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120829172721) do
+ActiveRecord::Schema.define(:version => 20120830200249) do
 
   create_table "companies", :force => true do |t|
     t.string   "name"
@@ -54,10 +54,11 @@ ActiveRecord::Schema.define(:version => 20120829172721) do
     t.text     "description"
     t.integer  "length"
     t.string   "embed"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
     t.integer  "company_id"
     t.string   "video"
+    t.string   "panda_video_id"
   end
 
   create_table "subscriptions", :force => true do |t|

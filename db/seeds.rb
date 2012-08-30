@@ -19,6 +19,11 @@ puts "Creating users."
               :admin => false)
 end
 
+puts "creating admin (user0@gmail.com)"
+# user0@gmail.com is an admin
+admin = User.first.admin = true
+admin.save
+
 puts "Creating tags."
 tags = ["shortcuts", "word", "excel"]
 tags.each do |tag|
