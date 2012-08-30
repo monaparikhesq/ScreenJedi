@@ -1,0 +1,9 @@
+<h2>Screencasts for <%= params[:keyword] %></h2>
+
+<ul>
+<% @tags.each do |tag| %>
+	<% if tag.screencast.company == User.find(session[:user_id]).company %>
+		<li><%= link_to "#{tag.screencast.title}", screencast_url(tag.screencast) %></li>
+	<% end %>
+<% end %>
+</ul>

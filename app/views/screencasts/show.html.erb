@@ -19,7 +19,7 @@
 Tags
 <ul>
 	<% @screencast.tags.each do |tag| %>
-		<%= tag.keyword %> 
+		<%= link_to "#{tag.keyword}", casts_for_tag_url(:keyword => tag.keyword) %> 
 	<% end %>
 </ul>
 <%= link_to "Edit Tags", tags_url(:id => @screencast.id) %>

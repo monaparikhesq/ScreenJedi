@@ -9,8 +9,8 @@
   </div>
 
   <div class="form-actions">
-    <%= f.submit nil, :class => 'btn btn-primary' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                tags_path, :class => 'btn' %>
+    <%= f.submit nil, :class => 'btn btn-primary' %>	
   </div>
+  <%= link_to "Back", screencast_url(params[:id]) %>
+
 <% end %>

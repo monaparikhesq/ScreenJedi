@@ -85,6 +85,10 @@ class TagsController < ApplicationController
       end
     end
   end
+  
+  def casts_for_tag
+    @tags = Tag.where("LOWER(keyword) = ?", params[:keyword].downcase)
+  end
 
   # DELETE /tags/1
   # DELETE /tags/1.json

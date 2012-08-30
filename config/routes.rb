@@ -12,7 +12,7 @@ Screenjedi::Application.routes.draw do
   post 'sessions/create' => 'sessions#create'
   get 'sessions/destroy' => 'sessions#destroy', :as => :signout
 
-  get '/members/:id' => 'members#index'
+  get '/members/:id' => 'members#index', :as => :members
 
   
   resources :subscriptions
@@ -32,7 +32,10 @@ Screenjedi::Application.routes.draw do
   
   get '/signup' => 'Users#new', :as => :signup
   
+  get '/casttags/:keyword' => 'tags#casts_for_tag', :as => :casts_for_tag
   
+  get 'memberships/new' => 'memberships#new', :as => :new_membership
+  post 'memberships' => 'memberships#create'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
