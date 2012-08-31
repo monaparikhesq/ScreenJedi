@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>ScreenJedi</title>
+  <title>ScreenForAll</title>
   <!--[if lt IE9]>
 	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"
 type="text/javascript"></script>
@@ -17,26 +17,27 @@ type="text/javascript"></script>
 </head>
 <body class="group">
 	<div class="container">
+    <h1><%= link_to "ScreenForAll", root_url %></h1>
 	  <nav class="group">
-			<h1><%= link_to "ScreenJedi", root_url %></h1>
-        <ul>
-          <% if session[:user_id] && User.find(session[:user_id]).admin == true %>
-          <% company_id = Company.find(Membership.find_by_user_id(session[:user_id]).company_id) %>
-          
-        	<li><%= link_to "#{Company.find(company_id).name} Members", "/members/#{company_id.id}" %></li>
-        	<li><%= link_to "Create A Screencast", new_screencast_url %></li>
-			<li><%= link_to "Add a Member", new_membership_url %></li>
-        <% end %>
+      <%= link_to "Create A Screencast", new_screencast_url, :class => "screencast" %>
+      <!-- <#%= link_to "Add a Member", new_membership_url, :class => "add-member" %> -->
 
-  			<% if session[:user_id] %> 
-  				<li><%=link_to "Sign Out", signout_url %></li>
-  			<% else %>
-  				<li><%= link_to "Sign Up", signup_url %></li>
-  				<li><%=link_to "Sign In", signin_url %></li> 
-  			<% end %>
 
-				<li><%=link_to "Contact Us", new_feedback_url %></li>
-      </ul>
+<!--         <ul>
+          <#% if session[:user_id] && User.find(session[:user_id]).admin == true %>
+          <#% company_id = Company.find(Membership.find_by_user_id(session[:user_id]).company_id) %>
+        	<li><#%= link_to "#{Company.find(company_id).name} Members", "/members/#{company_id.id}" %></li>
+        <#% end %>
+
+  			<#% if session[:user_id] %> 
+  				<li><#%=link_to "Sign Out", signout_url %></li>
+  			<#% else %>
+  				<li><#%= link_to "Sign Up", signup_url %></li>
+  				<li><#%=link_to "Sign In", signin_url %></li> 
+  			<#% end %>
+
+				<li><#%=link_to "Contact Us", new_feedback_url %></li>
+      </ul> -->
   	</nav>
 
 		<%= yield %>

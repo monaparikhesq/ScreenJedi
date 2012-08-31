@@ -1,4 +1,3 @@
-<form>
   <%= form_for @user do |f| %>
     <div class="form-field">
       <%= f.label :first_name, :class => "form-label" %>
@@ -25,7 +24,6 @@
       <%= f.password_field :password_confirmation, :class => "form-field" %>
     </div>
 
-      <%= f.submit nil %>
-      <%= link_to t('.cancel', :default => t("helpers.links.cancel")), users_path, :class => "cancel-button" %>
+      <%= f.submit nil, :class => "btn" %>
+      <!-- <#%= link_to t('.cancel', :default => t("helpers.links.cancel")), users_path, :class => "cancel-button" %> -->
   <% end %>
-</form>

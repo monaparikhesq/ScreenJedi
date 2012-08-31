@@ -11,15 +11,18 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email, :placeholder => 'Required' %>
-  </div>
-  <div class="field">
-    <%= f.label :comment %><br />
-    <%= f.text_area :comment, :placeholder => 'Optional' %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <form>
+    <div class="form-field">
+      <%= f.label :email, :class => "form-label" %>
+      <%= f.text_field :email, :placeholder => 'Required', :class => "form-field" %>
+    </div>
+
+    <div class="form-field">
+      <%= f.label :comment, :class => "form-label" %>
+      <%= f.text_area :comment, :placeholder => 'Optional', :class => "form-field" %>
+    </div>
+
+    <%= f.submit :class => "btn" %>
+  </form>
+
 <% end %>
