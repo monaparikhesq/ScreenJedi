@@ -3,6 +3,10 @@ body {
   background: #EAE3B6;
 }
 
+.logo {
+  text-align: center;
+}
+
 h1 {
   font-size: 2em;
   padding: 20px 0;
@@ -54,6 +58,10 @@ form input, textarea {
   padding-bottom: 6px;
 }
 
+.upload-field {
+  margin-bottom: 20px;
+}
+
 .btn {
   background: #d5d5d5;
   background: -webkit-linear-gradient(#fff, #d5d5d5);
@@ -76,6 +84,10 @@ form input, textarea {
      -moz-transition: all .2s linear;
        -o-transition: all .2s linear;
           transition: all .2s linear;
+}
+
+.btn-special {
+  margin-top: 20px;
 }
 
 form .btn:hover {

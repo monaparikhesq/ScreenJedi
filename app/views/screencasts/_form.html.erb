@@ -1,34 +1,21 @@
 <%= form_for @screencast, :html => { :multiparti => true, :class => 'form-horizontal' } do |f| %>
-  <div class="control-group">
-    <%= f.label :title, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :title, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :description, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_area :description, :class => 'text_area' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :length, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.number_field :length, :class => 'number_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :embed, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :embed, :class => 'text_field' %>
-    </div>
-  </div>
+
+
+    <%= f.label :title, :class => 'form-label' %>
+      <%= f.text_field :title, :class => 'form-field' %>
+
+    <%= f.label :description, :class => 'form-label' %>
+      <%= f.text_area :description, :class => 'form-field' %>
+
+    <%= f.label :length, :class => 'form-label' %>
+      <%= f.number_field :length, :class => 'form-field' %>
+
+    <%= f.label :embed, :class => 'form-label' %>
+      <%= f.text_field :embed, :class => 'form-field' %>
+
 	<%= f.hidden_field :company_id %>
 
-  <div class="control-group">
-    <div class="controls">
-      <%= f.file_field :video %>
-    </div>
+      <%= f.file_field :video, :class => "upload-field" %>
 
 	<!-- the control will appear next to this, and the video ID will be stored here after the upload -->
 	  <input type="hidden" name="video[panda_video_id]" id="returned_video_id" />
@@ -36,12 +23,9 @@
 	  <!-- upload progress bar (optional) -->
 	  <div id="upload_progress" class="panda_upload_progress"></div>
 
-  </div>
-  <div class="form-actions">
-    <%= f.submit nil, :class => 'btn btn-primary' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                screencasts_path, :class => 'btn' %>
-  </div>
+    <%= f.submit nil, :class => 'btn btn-special' %>
+<!--     <#%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                screencasts_path %> -->
 <% end %>
 
 <script>
