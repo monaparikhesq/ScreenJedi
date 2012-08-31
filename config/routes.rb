@@ -1,5 +1,7 @@
 Screenjedi::Application.routes.draw do
 
+  resources :feedbacks
+
   root :to => 'screenjedi#welcome'
   
   resources :follows

@@ -1,7 +1,6 @@
 User.destroy_all
 Tag.destroy_all
 Screencast.destroy_all
-Tagging.destroy_all
 Subscription.destroy_all
 Note.destroy_all
 Rating.destroy_all
@@ -19,10 +18,10 @@ puts "Creating users."
               :admin => false)
 end
 
-puts "creating admin (user0@gmail.com)"
-# user0@gmail.com is an admin
-admin = User.first.admin = true
-admin.save
+# puts "creating admin (user0@gmail.com)"
+# # user0@gmail.com is an admin
+# admin = User.first.admin = true
+# admin.save
 
 puts "Creating tags."
 tags = ["shortcuts", "word", "excel"]
