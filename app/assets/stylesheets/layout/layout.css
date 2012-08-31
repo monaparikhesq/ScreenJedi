@@ -34,10 +34,39 @@ nav ul li a {
 }
 
 section {
-  margin: 10px 0;
-  padding: 10px;
+  margin: 10px 0 40px 0;
+  padding: 20px;
+  background: white;
+  -webkit-border-radius: 5px;
+          border-radius: 5px;
+  -webkit-box-shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.14);
+          box-shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.14);
 }
 
 section ul {
   margin-bottom: 10px;
 }
+
+.videos, .employees {
+  float: left;
+}
+
+.videos {
+  width: 69%;
+  margin-right: 2%
+}
+
+.employees {
+  width: 20%;
+}
+
+.screenshot {
+  background: url(/assets/youtube-fill.png) no-repeat;
+  background-size: 200px;
+  width: 200px;
+  height: 100px;
+  float: left;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+

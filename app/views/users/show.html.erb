@@ -1,17 +1,49 @@
 <%- model_class = User -%>
 
-<section>
-  <h2><%=t '.title', :default => model_class.model_name.human %></h2>
+<!-- <section class="user">
+  <h2><#%=t '.title', :default => model_class.model_name.human %></h2>
   <ul>
-    <li><%= @user.first_name %> <%= @user.last_name %></li>
-    <!-- <li><#%= model_class.human_attribute_name(:email) %></li> -->
-    <li><%= @user.email %></li>
+    <li><#%= @user.first_name %> <%= @user.last_name %></li>
+    <li><#%= model_class.human_attribute_name(:email) %></li>
+    <li><#%= @user.email %></li>
   </ul>
-</section>
+</section> -->
 
-<section>
+<section class="videos">
   <% if @user.company %>
-    <h2>Company Videos</h2>
+    <h2>Screencasts</h2>
+    <ul>
+      <li>
+        <div class="screenshot"></div>
+        <div class="caption group">
+          <h3>Title</h3>
+          <p>Description Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco.</p>
+        </div>
+      </li>
+      <li>
+        <div class="screenshot"></div>
+        <div class="caption group">
+          <h3>Title</h3>
+          <p>Description Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco.</p>
+        </div>
+      </li>
+      <li>
+        <div class="screenshot"></div>
+        <div class="caption group">
+          <h3>Title</h3>
+          <p>Description Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco.</p>
+        </div>
+      </li>
+    </ul>
+
+
+
     <% @user.company.screencasts.each do |screencast| %>
       <ul>
         <!-- <#%= screencast.embed %> -->
@@ -22,11 +54,21 @@
       </ul>
     <% end %>
   <% end %>
-</section>
 
-<section>
   <% if @user.subscriptions %>
-    <h2>Bookmarked Screencasts</h2>
+    <h2>Bookmarked</h2>
+    <ul>
+      <li>
+        <div class="screenshot"></div>
+        <div class="caption group">
+          <h3>Title</h3>
+          <p>Description Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco.</p>
+        </div>        
+      </li>
+    </ul>
+
     <% @user.subscriptions.each do |subscription| %>
       <ul>
         <!-- <#%= subscription.screencast.embed %> -->
@@ -39,9 +81,9 @@
   <% end %>
 </section>
 
-<section>
+<section class="employees">
 <% if @user.admin == true %>
-	<h2>Members</h2>
+	<h2>Employees</h2>
 	<ul>
 		<% @user.company.memberships.each do |memb| %>
 			<li><%= memb.user.first_name %> <%= memb.user.last_name %></li>
