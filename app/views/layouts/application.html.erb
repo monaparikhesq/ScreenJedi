@@ -14,39 +14,13 @@ type="text/javascript"></script>
   <%= javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js' %>  
   <%= javascript_include_tag 'http://cdn.pandastream.com/u/1.4/jquery.panda-uploader.min.js' %>
 </head>
-</head>
 <body class="group">
-	<div class="container">
-    <h1 class="logo"><%= link_to "ScreenForAll", root_url %></h1>
-	  <nav class="group">
-      <%= link_to "Create A Screencast", new_screencast_url, :class => "screencast" %>
-      <!-- <#%= link_to "Add a Member", new_membership_url, :class => "add-member" %> -->
 
-
-        <ul>
-          <% if session[:user_id] && User.find(session[:user_id]).admin == true %>
-          <% company_id = Company.find(Membership.find_by_user_id(session[:user_id]).company_id) %>
-        	<li><%= link_to "#{Company.find(company_id).name} Members", "/members/#{company_id.id}" %></li>
-        <% end %>
-
-  			<% if session[:user_id] %> 
-  				<li><%=link_to "Sign Out", signout_url %></li>
-  			<% else %>
-  				<li><%= link_to "Sign Up", signup_url %></li>
-  				<li><%=link_to "Sign In", signin_url %></li> 
-  			<% end %>
-
-				<li><%=link_to "Contact Us", new_feedback_url %></li>
-      </ul>
-  	</nav>
-
-		<%= yield %>
-	</div> <!-- container -->
-	
-	<!-- <footer>
-	  <p>About Us</p>
-	  ScreenJedi is a web app that allows you to create, post, store and view screencasts.
-	</footer> -->
+    <%= render 'layouts/header' %>
+    <div class= 'container'>
+  	  <%= yield %>
+  	</div>
+		<%= render 'layouts/footer' %>
 	</body>
 </html>
 

@@ -84,6 +84,13 @@ def video_embed_tag(link)
     return "<embed type='application/pdf' width='300px' height='200px' src=#{url} ></embed>"
     
   end
-  
+
+  def screencast_item
+    image_tag('youtube-fill.png', border: 0)
+  end
+
+  def screencast_player
+    image_tag('Screencast.png', border: 0)
+  end 
 
 end

@@ -1,0 +1,197 @@
+// Override Bootstrap Styles
+$navbarLinkColor: #fff;
+$navbarLinkColorHover: #002F4F;
+$baseFontFamily: 'Open Sans', sans-serif;
+$dropdownLinkColor: #666;
+$dropdownLinkColorHover: #fff;
+$dropdownLinkBackgroundHover: #007ACC;
+$navbarSearchBackground: #464646;
+$navbarSearchBackgroundFocus: #ddd;
+$navbarSearchPlaceholderColor: #fff;
+
+@import "bootstrap";
+
+body { 
+	padding-top: 60px; 
+	background: url('/background/subtle_surface.png') repeat; 
+	font-family: 'Open Sans', sans-serif;
+}
+
+@import "bootstrap-responsive";
+
+/*-----------COLORS----------*/
+$blue: #002F4F;
+$white: #fff;
+$grayLight: #aaa;
+
+
+/*----------HEADER---------*/
+.navbar-inner {
+  background: $blue;
+}
+
+#logo {
+  float: left;
+  margin-right: 10px;
+  font-size: 1.7em;
+  color: $white;
+  letter-spacing: -1px;
+  padding-top: 9px;
+  font-weight: bold;
+  line-height: 1;
+  &:hover { text-decoration: none; }
+}
+
+ul.nav.pull-right li {
+	&:hover { 
+		color: $blue; 
+		background-color: $white;
+		-webkit-border-radius: 3px;
+		-moz-border-radius: 3px;
+		border-radius: 3px; 
+	}
+}
+
+/*----------FOOTER----------*/
+footer {
+  margin-top: 0px;
+  padding-top: 5px;
+
+  hr.thick {
+  	color: $blue;
+  	background-color: $blue;
+  	height: 3px;
+    -webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+  }  
+
+  p {
+	line-height: 1.2em !important;
+	color: $grayLight;
+  }
+  
+  .nav a, .nav a:visited {
+    position: relative;
+    top: -3px;
+    display: inline-block;
+    text-decoration: none;
+    color: $grayLight;
+    &:hover { 
+	  color: $grayLight; 
+	  text-decoration: none; 
+	}
+  }  
+
+  span.divider {
+    display: inline-block;
+    margin:2px 5px 0 5px;
+    padding:1px 0 1px 0;
+    width: 1px;
+    height: 14px;
+    background-color: $grayLight;
+  }
+	
+  p.copyright {
+	float: right;
+  }	
+}
+
+/*----------INDEX---------*/
+.span8, .span3 {
+	background: $white;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	position:relative;
+	box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.80);
+	-moz-box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.80);
+	-webkit-box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.80);
+	
+	.row { padding-bottom: 20px;}
+	
+	h1 {
+		font-size: 28px;
+		text-align: center;
+		color: $white;
+		background: $blue;
+		padding-bottom: 5px;
+		margin-bottom:15px;
+		-webkit-border-top-left-radius: 3px;
+		-webkit-border-top-right-radius: 3px;
+		-moz-border-radius-topleft: 3px;
+		-moz-border-radius-topright: 3px;
+		border-top-left-radius: 3px;
+		border-top-right-radius: 3px;
+	}
+	
+	
+	h2 {
+		font-size: 22px;
+		color: $blue;
+		margin:0 0 15px 30px;
+		text-decoration: underline;
+	}
+	
+	.span2 img { 
+		margin-left: 20px; 
+		-webkit-border-radius: 2px;
+		-moz-border-radius: 2px;
+		border-radius: 2px;
+	}
+	
+	h3 {
+		font-size: 14px;
+		margin:-8px 0 0px 15px;
+		text-decoration: underline;
+	}
+	
+	p { margin-left: 15px; }
+	
+	input { margin-left: 5px; width: 180px;}
+	
+	.span2 {
+		p { margin-left: -10px; }
+		.icon-user { margin-top:2px; }
+	}
+	
+	.btn {
+		margin:0 0 20px 5px;
+	}
+}
+
+/*----------SCREENCAST---------*/
+.player {
+	text-align: center;
+	margin-bottom: 20px;
+	
+	img { 
+		-webkit-border-radius: 2px;
+		-moz-border-radius: 2px;
+		border-radius: 2px;
+	}
+	
+	.icon-star {margin-top: 3px;}
+	
+	.span2.pull-right { margin-right: 30px; }
+}
+
+.span6 {
+	h2 {
+		margin:0 0 0px 15px;
+	}
+}
+
+/*----------CONTACT---------*/
+.span7 {
+	
+	h4 {
+		margin-bottom: 15px;
+	}
+	
+	label { color: $blue; }
+	
+	input { margin-left: -1px; }
+	
+	button.btn { margin-left: -1px; }
+}

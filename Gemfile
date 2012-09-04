@@ -6,6 +6,7 @@ gem 'rails', '3.2.6'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
+gem "simple_form", "~>2.0.2"
 gem 'carrierwave'
 # gem 'aws-s3'
 # gem 'aws-sdk'
@@ -25,7 +26,8 @@ group :assets do
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
-
+  gem "bootstrap-sass", "~> 2.0.3.1"
+  gem 'twitter-bootstrap-rails'
   gem 'uglifier', '>= 1.0.3'
   # gem 'twitter-bootstrap-rails'
   gem 'therubyracer'

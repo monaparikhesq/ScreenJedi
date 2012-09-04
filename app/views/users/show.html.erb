@@ -1,96 +1,70 @@
-<%- model_class = User -%>
-
-<!-- <section class="user">
-  <h2><#%=t '.title', :default => model_class.model_name.human %></h2>
-  <ul>
-    <li><#%= @user.first_name %> <%= @user.last_name %></li>
-    <li><#%= model_class.human_attribute_name(:email) %></li>
-    <li><#%= @user.email %></li>
-  </ul>
-</section> -->
-
-<section class="videos">
-  <% if @user.company %>
-    <h2>Screencasts</h2>
-    <ul>
-      <li>
-        <div class="screenshot"></div>
-        <div class="caption group">
-          <h3>Title</h3>
-          <p>Description Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco.</p>
-        </div>
-      </li>
-      <li>
-        <div class="screenshot"></div>
-        <div class="caption group">
-          <h3>Title</h3>
-          <p>Description Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco.</p>
-        </div>
-      </li>
-      <li>
-        <div class="screenshot"></div>
-        <div class="caption group">
-          <h3>Title</h3>
-          <p>Description Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco.</p>
-        </div>
-      </li>
-    </ul>
-
-
-
-    <% @user.company.screencasts.each do |screencast| %>
-      <ul>
-        <!-- <#%= screencast.embed %> -->
-      	<li><%= link_to screencast.title, screencast_path(screencast) %></li>
-      	<li><span class="section-title">Description: </span><%= screencast.description %></li>
-        <li><span class="section-title">Length: </span><%= screencast.length %></li>
-        <!-- <#%= screencast.created_at %> -->
-      </ul>
-    <% end %>
-  <% end %>
-
-  <% if @user.subscriptions %>
-    <h2>Bookmarked</h2>
-    <ul>
-      <li>
-        <div class="screenshot"></div>
-        <div class="caption group">
-          <h3>Title</h3>
-          <p>Description Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco.</p>
-        </div>        
-      </li>
-    </ul>
-
-    <% @user.subscriptions.each do |subscription| %>
-      <ul>
-        <!-- <#%= subscription.screencast.embed %> -->
-      	<li><%= link_to subscription.screencast.title, screencast_path(subscription.screencast) %></li>
-      	<li><span class="section-title">Description: </span><%= subscription.screencast.description %></li>
-        <li><span class="section-title">Length: </span><%= subscription.screencast.length %></li>
-        <!-- <#%= subscription.screencast.created_at %> -->
-      </ul>
-    <% end %>
-  <% end %>
+<section class="container" 
+	<div class="row main">
+		<div class="span8">
+			<h1>Welcome to Parikh Law LLC</h1>
+			<div class="row">
+				<h2>Screencasts</h2>
+				<!--EXAMPLE #1 -->
+				<div class="span2 img"><%= screencast_item %></div>
+				<div class="span5">
+					<h3>Introduction #1</h3>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod 
+					   tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam...
+					</p>
+				</div>
+				<!--EXAMPLE #2 -->
+				<div class="span2 img"><%= screencast_item %></div>
+				<div class="span5">
+					<h3>Introduction #2</h3>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod 
+					   tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam...
+					</p>
+				</div>
+				<!--EXAMPLE #3 -->
+				<div class="span2 img"><%= screencast_item %></div>
+				<div class="span5">
+					<h3>Introduction #3</h3>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod 
+					   tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam...
+					</p>
+				</div>
+				<h2>Bookmarks</h2>
+				<!--BOOKMARKS EXAMPLE -->
+				<div class="span2 img"><%= screencast_item %></div>
+				<div class="span5">
+					<h3>Bookmark Example</h3>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod 
+				   	   tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam...
+					</p>
+				</div>
+			</div>
+	 	</div>
+	 	<div class="span3">
+	  		<h1>Employees</h1>
+			<form>
+				<input type="text" class="search-query" placeholder="Search">
+			</form>
+			<div class="span2">
+				<p><span class="add-on"><i class="icon-user"></i></span>
+				William Perry</p>
+			</div>
+			<div class="span2">
+				<p><span class="add-on"><i class="icon-user"></i></span>
+				Matt Suhey</p>
+			</div>
+			<div class="span2">
+				<p><span class="add-on"><i class="icon-user"></i></span>
+				Jim McMahon</p>
+			</div>
+			<div class="span2">
+				<p><span class="add-on"><i class="icon-user"></i></span>
+				Walter Payton</p>
+			</div>
+			<div class="span2">
+				<p><span class="add-on"><i class="icon-user"></i></span>
+				Mike Ditka</p>
+			</div>
+			<div class="btn">Add Employee</div>
+		</div>
+	</div>
 </section>
-
-<section class="employees">
-<% if @user.admin == true %>
-	<h2>Employees</h2>
-	<ul>
-		<% @user.company.memberships.each do |memb| %>
-			<li><%= memb.user.first_name %> <%= memb.user.last_name %></li>
-		<% end %>
-	</ul>
-<% end %>
-</section><!--  <#%= link_to t('.back', :default => t("helpers.links.back")), users_path  %>
-      <#%= link_to t('.edit', :default => t("helpers.links.edit")), edit_user_path(@user) %>
-      <#%= link_to t('.destroy', :default => t("helpers.links.destroy")), user_path(@user), :method => 'delete', :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) %> -->
-  

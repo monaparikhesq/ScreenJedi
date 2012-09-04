@@ -1,0 +1,17 @@
+<header class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+	<div class="container">
+	  <header>
+	  <%= link_to "ScreenForAll", root_url, id: "logo" %>	
+	  </header>
+	  <ul class="nav pull-right">	
+		<li><%= link_to 'Add Screencast', new_screencast_url, :class => "screencast" %></li>
+		<li><%= link_to 'Contact Us', new_feedback_url %></li>
+	  <li><%= link_to 'Sign out', signout_url %></li>
+	  <li><%= link_to 'New User', signup_url %></li>
+	  <li><%=link_to "Login", signin_url %></li>   
+	  
+	  </ul><!--/.nav.pull-right-->
+	</div><!--/.container-->
+  </div><!--/.navbar-inner-->
+</header><!--/.navbar.navbar-fixed-top-->
