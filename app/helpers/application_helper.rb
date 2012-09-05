@@ -86,11 +86,11 @@ def video_embed_tag(link)
   end
 
   def screencast_item
-    image_tag('youtube-fill.png', border: 0)
+    image_tag('youtube-fill.png', border: 10)
   end
 
   def screencast_player
-    image_tag('Screencast.png', border: 0)
+    image_tag('Screencast.png', border: 10)
   end 
 
 end

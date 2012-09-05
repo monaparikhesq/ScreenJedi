@@ -1,33 +1,42 @@
-<%- model_class = Screencast -%>
-
-<div class="main">
-<h2><%=t '.title', :default => model_class.model_name.human.pluralize %></h2>
-
-  <%= model_class.human_attribute_name(:title) %>
-  <%= model_class.human_attribute_name(:description) %>
-  <%= model_class.human_attribute_name(:length) %>
-  <%= model_class.human_attribute_name(:embed) %>
-  <%= model_class.human_attribute_name(:created_at) %>
-  <%=t '.actions', :default => t("helpers.actions") %>
-
-  <% @screencasts.each do |screencast| %>
-      
-    <%= link_to screencast.title, screencast_path(screencast) %>
-    <%= screencast.description %>
-    <%= screencast.length %>
-    <%= screencast.embed %>
-    <%=l screencast.created_at %>
-      
-    <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                edit_screencast_path(screencast), :class => 'btn btn-mini' %>
-    <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                screencast_path(screencast),
-                :method => :delete,
-                :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
-                :class => 'btn btn-mini btn-danger' %>
-    <% end %>
-
-  <%= link_to t('.new', :default => t("helpers.links.new")),
-              new_screencast_path,
-              :class => 'btn btn-primary' %>
-</div>
+<section class="container" 
+	<div class="row main">
+		<div class="span8">
+			<h1>You Are Watching: Introduction #1</h1>
+			<div class="player"><%= screencast_player %>
+				<div class="span2 pull-right">
+					Rating:&nbsp;
+					<span class="add-on"><i class="icon-star"></i></span>
+					<span class="add-on"><i class="icon-star"></i></span>
+					<span class="add-on"><i class="icon-star"></i></span>
+					<span class="add-on"><i class="icon-star"></i></span>
+					<span class="add-on"><i class="icon-star last"></i></span>
+				</div>
+			</div>
+			<div class="span6">
+				<h2>Description</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod 
+			   	   tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam...
+				</p>
+			</div>
+	 	</div>
+	 	<div class="span3">
+	  		<h1>Employees</h1>
+			<form>
+				<input type="text" class="search-query" placeholder="Search">
+			</form>
+			<div class="span2">
+				<p><span class="add-on"><i class="icon-user"></i></span>
+				William Perry
+				&nbsp;&nbsp;
+				<span class="add-on"><i class="icon-ok"></i></span></p>
+			</div>
+			<div class="span2">
+				<p><span class="add-on"><i class="icon-user"></i></span>
+				Matt Suhey
+				&nbsp;&nbsp;&nbsp;&nbsp;
+				<span class="add-on"><i class="icon-ok"></i></span></p>
+			</div>
+			<div class="btn">Add Employee to Screencast</div>
+		</div>
+	</div>
+</section>
